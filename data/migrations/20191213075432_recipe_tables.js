@@ -7,10 +7,11 @@ exports.up = function(knex) {
     .createTable("ingredients", t => {
       t.increments();
       t.string("name").notNullable();
-      t.float("quantity").notNullable();
     })
     .createTable("recipe_ingredients", t => {
       t.primary(["recipe_id", "ingredient_id"]);
+      t.float("quantity").notNullable();
+      t.string("measurements").notNullable();
 
       // foriegn key
       t.integer("recipe_id")
